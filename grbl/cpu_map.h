@@ -62,11 +62,7 @@
   #define LIMIT_PORT       PORTB
   #define X_LIMIT_BIT      1  // Uno Digital Pin 9
   #define Y_LIMIT_BIT      2  // Uno Digital Pin 10
-  #ifdef VARIABLE_SPINDLE // Z Limit pin and spindle enabled swapped to access hardware PWM on Pin 11.
-    #define Z_LIMIT_BIT	   4 // Uno Digital Pin 12
-  #else
-    #define Z_LIMIT_BIT    3  // Uno Digital Pin 11
-  #endif
+  #define Z_LIMIT_BIT	   4 // Uno Digital Pin 12
   #if !defined(ENABLE_DUAL_AXIS)
     #define LIMIT_MASK     ((1<<X_LIMIT_BIT)|(1<<Y_LIMIT_BIT)|(1<<Z_LIMIT_BIT)) // All limit bits
   #endif
@@ -118,7 +114,7 @@
         #define SPINDLE_ENABLE_BIT    3  // Uno Digital Pin 11
       #endif
     #else
-      #define SPINDLE_ENABLE_BIT    4  // Uno Digital Pin 12
+      #define SPINDLE_ENABLE_BIT    3  // Uno Digital Pin 11
     #endif
     #ifndef USE_SPINDLE_DIR_AS_ENABLE_PIN
       #define SPINDLE_DIRECTION_DDR   DDRB
@@ -150,11 +146,11 @@
     #define SPINDLE_PWM_DDR   DDRB
     #define SPINDLE_PWM_PORT  PORTB
     #define SPINDLE_PWM_BIT   3    // Uno Digital Pin 11
-  
+
   #else
 
-    // Dual axis feature requires an independent step pulse pin to operate. The independent direction pin is not 
-    // absolutely necessary but facilitates easy direction inverting with a Grbl $$ setting. These pins replace 
+    // Dual axis feature requires an independent step pulse pin to operate. The independent direction pin is not
+    // absolutely necessary but facilitates easy direction inverting with a Grbl $$ setting. These pins replace
     // the spindle direction and optional coolant mist pins.
 
     #ifdef DUAL_AXIS_CONFIG_PROTONEER_V3_51
